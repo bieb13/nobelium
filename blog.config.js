@@ -1,10 +1,10 @@
 const BLOG = {
-  title: 'CRAIGARY',
-  author: 'Craig Hart',
-  email: 'i@craigary.net',
-  link: 'https://nobelium.vercel.app',
-  description: 'This gonna be an awesome website.',
-  lang: 'en-US',
+  title: 'BIE哔哔',
+  author: 'BIE哔哔',
+  email: 'besthop3@gmail.com',
+  link: 'https://bietalk.com',
+  description: 'M的不完全指北.',
+  lang: 'zh-CN',
   appearance: 'auto', // ['light', 'dark', 'auto'],
   lightBackground: '#ffffff', // use hex value, don't forget '#' e.g #fffefc
   darkBackground: '#111827', // use hex value, don't forget '#'
@@ -13,10 +13,10 @@ const BLOG = {
   postsPerPage: 7,
   showAbout: true, // WIP
   showArchive: true, // WIP
-  socialLink: 'https://twitter.com/craigaryhart',
+  socialLink: 'https://t.me/bieb13',
   seo: {
-    keywords: ['Blog', 'Website', 'Notion'],
-    googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
+    keywords: ['Blog', 'notion', '别bb','bieb13','bie哔哔','BIE哔哔'],
+    googleSiteVerification: 'PD5goUx8q7i025ABYsr6b0I3mer21fXRkbFF_Ov7djw' // Remove the value or replace it with your own google site verification code
   },
   notionPageId: process.env.NOTION_PAGE_ID, // DO NOT CHANGE THIS！！！
   analytics: {
@@ -27,18 +27,18 @@ const BLOG = {
       domainId: '' // e.g '0e2257a8-54d4-4847-91a1-0311ea48cc7b'
     },
     gaConfig: {
-      measurementId: '' // e.g: G-XXXXXXXXXX
+      measurementId: 'G-CSDC2478HW' // e.g: G-XXXXXXXXXX
     }
   },
   comment: {
     // support provider: gitalk
-    provider: '', // leave it empty if you don't need any comment plugin
+    provider: 'gitalk', // leave it empty if you don't need any comment plugin
     gitalkConfig: {
-      repo: '', // The repository of store comments
-      owner: '',
-      admin: [],
-      clientID: '',
-      clientSecret: '',
+      repo: 'git', // The repository of store comments
+      owner: 'bieb13',
+      admin: [bieb13],
+      clientID: 'fd4221176b3388f09f03',
+      clientSecret: 'b47972efd5b2bf64a8d618ad5d355f495088a4de',
       distractionFreeMode: false
     }
   }
