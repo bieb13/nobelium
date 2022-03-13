@@ -3,7 +3,7 @@ import Footer from '@/components/Footer'
 import BLOG from '@/blog.config'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
-import BlogPost from './BlogPost'
+// import BlogPost from './BlogPost'
 
 const Container = ({ children, layout, fullWidth, ...customMeta }) => {
   const url = BLOG.path.length ? `${BLOG.link}/${BLOG.path}` : BLOG.link
@@ -16,9 +16,9 @@ const Container = ({ children, layout, fullWidth, ...customMeta }) => {
     <div>
       <Head>
         <title>{meta.title}</title>
-        <meta content={BLOG.darkBackground} name="theme-color" />
+        {/* <meta content={BLOG.darkBackground} name="theme-color" /> */}
         <meta name="robots" content="follow, index" />
-        <meta charset={BLOG.lang} />
+        <meta charSet="UTF-8" />
         {BLOG.seo.googleSiteVerification && (
           <meta
             name="google-site-verification"
@@ -38,7 +38,7 @@ const Container = ({ children, layout, fullWidth, ...customMeta }) => {
         />
         <meta
           property="og:image"
-          content={`https://og-image-craigary.vercel.app/${encodeURIComponent(
+          content={`${BLOG.ogImageGenerateURL}/${encodeURIComponent(
             meta.title
           )}.png?theme=dark&md=1&fontSize=125px&images=https%3A%2F%2Fnobelium.vercel.app%2Flogo-for-dark-bg.svg`}
         />
@@ -48,22 +48,31 @@ const Container = ({ children, layout, fullWidth, ...customMeta }) => {
         <meta name="twitter:title" content={meta.title} />
         <meta
           name="twitter:image"
-          content={`https://og-image-craigary.vercel.app/${meta.title}.png?theme=dark&md=1&fontSize=125px&images=https%3A%2F%2Fnobelium.vercel.app%2Flogo-for-dark-bg.svg`}
+          content={`${BLOG.ogImageGenerateURL}/${encodeURIComponent(
+            meta.title
+          )}.png?theme=dark&md=1&fontSize=125px&images=https%3A%2F%2Fnobelium.vercel.app%2Flogo-for-dark-bg.svg`}
         />
         {meta.type === 'article' && (
           <>
-            <meta property="article:published_time" content={meta.date} />
+            <meta
+              property="article:published_time"
+              content={meta.date || meta.createdTime}
+            />
             <meta property="article:author" content={BLOG.author} />
           </>
         )}
       </Head>
-      <div className="wrapper">
+      <div
+        className={`wrapper ${
+          BLOG.font === 'serif' ? 'font-serif' : 'font-sans'
+        }`}
+      >
         <Header
           navBarTitle={layout === 'blog' ? meta.title : null}
           fullWidth={fullWidth}
         />
         <main
-          className={`m-auto font-sans flex-grow w-full transition-all ${
+          className={`m-auto flex-grow w-full transition-all ${
             !fullWidth ? 'max-w-2xl px-4' : 'px-4 md:px-24'
           }`}
         >

@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import { useState } from 'react'
 import BlogPost from '@/components/BlogPost'
 import Container from '@/components/Container'
@@ -6,9 +5,7 @@ import Tags from '@/components/Tags'
 import PropTypes from 'prop-types'
 
 const SearchLayout = ({ tags, posts, currentTag }) => {
-  const router = useRouter()
   const [searchValue, setSearchValue] = useState('')
-  const [selectedTag, setSelectedTag] = useState('')
   let filteredBlogPosts = []
   if (posts) {
     filteredBlogPosts = posts.filter(post => {
@@ -18,14 +15,6 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
     })
   }
 
-  const handleTagClick = key => {
-    if (key === currentTag) {
-      setSelectedTag('')
-      router.push('/search')
-    } else {
-      router.push(`/tag/${encodeURIComponent(key)}`)
-    }
-  }
   return (
     <Container>
       <div className="relative">
@@ -54,14 +43,13 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
       </div>
       <Tags
         tags={tags}
-        handleTagClick={handleTagClick}
-        selectedTag={selectedTag || currentTag}
+        currentTag={currentTag}
       />
       <div className="article-container my-8">
         {!filteredBlogPosts.length && (
           <p className="text-gray-500 dark:text-gray-300">No posts found.</p>
         )}
-        {filteredBlogPosts.slice(0, 10).map(post => (
+        {filteredBlogPosts.slice(0, 20).map(post => (
           <BlogPost key={post.id} post={post} />
         ))}
       </div>
