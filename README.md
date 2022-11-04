@@ -85,7 +85,7 @@ docker run -d --name nobelium -p 3000:3000 -e NOTION_PAGE_ID=${NOTION_PAGE_ID} n
 
 ### Use default docker image
 ```
-# pull image
+# pull images
 docker pull ghcr.io/craigary/nobelium:main
 
 # run with docker
